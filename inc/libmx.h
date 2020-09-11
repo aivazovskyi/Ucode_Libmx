@@ -11,7 +11,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <limits.h>
-
+#include <malloc/malloc.h>
 
 #include <stdio.h> // DELETE IT!!!
 
@@ -30,7 +30,7 @@ typedef struct s_list
  *	UTILS PACK
  */
 void mx_printchar(char c);
-// void mx_print_unicode(wchar_t c);
+void mx_print_unicode(wchar_t c);
 void mx_printstr(const char *s);
 void mx_print_strarr(char **arr, const char *delim);
 void mx_printint(int n);
@@ -84,8 +84,8 @@ void *mx_memchr(const void *s, int c, size_t n);
 void *mx_memrchr(const void *s, int c, size_t n);
 void *mx_memmem(const void *big, size_t big_len, 
                 const void *little, size_t little_len);
-// void *mx_memmove(void *dst, const void *src, size_t len);
-// void *mx_realloc(void *ptr, size_t size);
+void *mx_memmove(void *dst, const void *src, size_t len);
+void *mx_realloc(void *ptr, size_t size);
 
 /*
  *	LIST PACK
@@ -105,5 +105,6 @@ int mx_atoi(const char *str);
 int mx_strncmp(const char *s1, const char *s2, int n);
 char *mx_strchr(const char *s, int c);
 bool mx_isspace(char c);
+bool mx_isdigit(int c);
 
 // #include "libmx.h"
