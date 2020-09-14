@@ -1,11 +1,11 @@
 #include "libmx.h"
 
 static void mx_str_in_array(char const *s, char c, char **new_arr) {
-    int len_of_word = 0;    
+    int len_of_word = 0;
     int j = 0;
     int k = 0;
 
-    for (int i = 0; s[i] != '\0'; i++) {  
+    for (int i = 0; s[i] != '\0'; i++) {
         if (s[i] != c && len_of_word == 0)
             k = i;
         if (s[i] != c && s[i] != 0)

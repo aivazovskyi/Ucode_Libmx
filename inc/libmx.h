@@ -1,7 +1,5 @@
 #pragma once
 
-// #include "libmx.h"
-
 /*
  *	STANDART LIBRARIES
  */
@@ -10,11 +8,12 @@
 #include <stdbool.h>
 #include <string.h>
 #include <fcntl.h>
-#include <limits.h>
 #include <malloc/malloc.h>
 
-#include <stdio.h> // DELETE IT!!!
 
+#define INT_MIN -2147483648
+#define LONG_MAX 9223372036854775807
+#define LONG_MIN -9223372036854775807
 
 /*
  *	STRUCTURES PROTOTYPES
@@ -25,9 +24,21 @@ typedef struct s_list
     struct s_list *next;
 }              t_list;
 
+typedef struct read_line {
+    char *buf;
+    int flag;
+    int index;
+    char delim;
+    int fd;
+    int chars;
+    int sum;
+    size_t k;
+    size_t j;
+}              r_line;
+
 
 /*
- *	UTILS PACK
+ *	UTILS PACK - 14 functions
  */
 void mx_printchar(char c);
 void mx_print_unicode(wchar_t c);
@@ -45,7 +56,7 @@ int mx_bubble_sort(char **arr, int size);
 int mx_quicksort(char **arr, int left, int right);
 
 /*
- *	STRING PACK
+ *	STRING PACK - 24 functions
  */
 int mx_strlen(const char *s);
 void mx_swap_char(char *s1, char *s2);
@@ -69,11 +80,11 @@ char *mx_del_extra_spaces(const char *str);
 char **mx_strsplit(char const *s, char c);
 char *mx_strjoin(char const *s1, char const *s2);
 char *mx_file_to_str(const char *file);
-// int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
+int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 
 /*
- *	MEMORY PACK
+ *	MEMORY PACK  - 9 functions
  */
 void *mx_memset(void *b, int c, size_t len);
 void *mx_memcpy(void *restrict dst, const void *restrict src, size_t n);
@@ -88,7 +99,7 @@ void *mx_memmove(void *dst, const void *src, size_t len);
 void *mx_realloc(void *ptr, size_t size);
 
 /*
- *	LIST PACK
+ *	LIST PACK - 7 functions
  */
 t_list *mx_create_node(void *data);
 void mx_push_front(t_list **list, void *data);
@@ -99,12 +110,25 @@ int mx_list_size(t_list *list);
 t_list *mx_sort_list(t_list *lst, bool (*cmp)(void *, void *));
 
 /*
- *	OTHER USEFULL FUNCTION
+ *	OTHER USEFULL FUNCTION - 20 functions
  */
 int mx_atoi(const char *str);
 int mx_strncmp(const char *s1, const char *s2, int n);
 char *mx_strchr(const char *s, int c);
 bool mx_isspace(char c);
 bool mx_isdigit(int c);
-
-// #include "libmx.h"
+bool mx_isalpha(int c);
+bool mx_islower(int c);
+bool mx_isupper(int c);
+void mx_arr_rotate(int *arr, int size, int shift);
+char *mx_concat_words(char **words);
+int *mx_copy_int_arr(const int *src, int size);
+int mx_factorial_iter(int n);
+int mx_factorial_rec(int n);
+int mx_insertion_sort(char **arr, int size);
+void mx_is_positive(int i);
+void mx_printerr(const char *s);
+bool mx_is_odd(int value);
+int mx_s_strlen(const char *s);
+int mx_tolower(int c);
+int mx_toupper(int c);
